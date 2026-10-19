@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-20",
+  "top_themes": [
+    "UI/UX & Feature Gaps",
+    "Customer Support & Service Quality",
+    "Performance & Stability Issues"
+  ],
+  "weekly_pulse": "**Weekly Product Pulse -- Groww**\n\n**1. Top Customer Themes (Total Analyzed: 2000)**\n- **UI/UX & Feature Gaps**: 1284 reviews (64.2%)\n- **Customer Support & Service Quality**: 278 reviews (13.9%)\n- **Performance & Stability Issues**: 190 reviews (9.5%)\n\n**2. Voice of Customer (Genuine Quotes)**\n> *\"too much service charges.......so many hidden charges....customer service wrost...they will respond after after death or mkt hours close....\"*\n> *\"worest broker charges to High customer support nill\"*\n> *\"very easy into trading\"*\n\n**3. Key Friction Observation**\nUsers repeatedly confuse statutory AMC exit loads with unauthorized broker charges upon redemption.\n\n**4. Actionable Recommendations**\n1. *Pre-Redeem Estimator*: Display exact rupee exit-load deduction before redemption confirmation.\n2. *Contextual Badge*: Clarify that exit load is retained by the AMC, not Groww.\n3. *SIP Aging Tracker*: Add purchase-date tooltips identifying which SIP installments have cleared lock-in.",
+  "identified_fee_issue": "Statutory AMC Exit-Load Misconception: Retail unitholders mistakenly attribute statutory AMC exit load deductions upon redemption to unauthorized broker commissions levied by Groww.",
+  "explanation_bullets": [
+    "Exit load is a statutory fee levied by Asset Management Companies (AMCs), not by Groww.",
+    "The fee is deducted from fund NAV only if units are redeemed before the scheme's specified holding period (typically 7 to 365 days).",
+    "Groww operates as a direct mutual fund platform and charges 0 brokerage and 0 commission on mutual fund redemptions.",
+    "For SIP investments, exit load applies individually to each monthly installment based on its unique purchase date on a FIFO basis.",
+    "Exit load proceeds are credited back into the mutual fund scheme corpus to safeguard long-term unitholders.",
+    "Investors can preview applicable exit-load percentages and holding cutoff periods on each fund's detail page before placing orders."
+  ],
+  "source_links": [
+    "https://groww.in/help/mutual-funds/order/what-is-exit-load--71",
+    "https://groww.in/p/exit-load-in-mutual-funds",
+    "https://www.amfiindia.com",
+    "https://www.sebi.gov.in"
+  ]
+}
