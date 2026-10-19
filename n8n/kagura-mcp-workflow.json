@@ -1,0 +1,85 @@
+{
+  "name": "Kagura MCP Server",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "kagura-pulse",
+        "authentication": "bearerAuth",
+        "instructions": "This server publishes an internal weekly product pulse for the Groww app. Safety rules: append_to_doc and create_email_draft must ONLY be called after a human has typed APPROVE for the exact text being published. read_doc is read-only and safe to call any time (use it for duplicate checks and read-back verification). There is no send-email tool by design; creating the Gmail draft is the final step."
+      },
+      "id": "b1000000-0000-4000-8000-000000000001",
+      "name": "MCP Server Trigger",
+      "type": "@n8n/n8n-nodes-langchain.mcpTrigger",
+      "typeVersion": 1,
+      "position": [0, 0],
+      "webhookId": "kagura-pulse-mcp"
+    },
+    {
+      "parameters": {
+        "resource": "document",
+        "operation": "update",
+        "documentURL": "PASTE_DOC_ID_HERE",
+        "simple": true,
+        "actionsUi": {
+          "actionFields": [
+            {
+              "object": "text",
+              "action": "insert",
+              "locationChoice": "endOfSegmentLocation",
+              "index": 0,
+              "text": "={{ $fromAI('text', 'Markdown text of the approved weekly pulse entry to append to the log', 'string') }}"
+            }
+          ]
+        }
+      },
+      "id": "b1000000-0000-4000-8000-000000000002",
+      "name": "append_to_doc",
+      "type": "n8n-nodes-base.googleDocs",
+      "typeVersion": 2,
+      "position": [360, -220]
+    },
+    {
+      "parameters": {
+        "resource": "document",
+        "operation": "get",
+        "documentURL": "PASTE_DOC_ID_HERE",
+        "simple": true
+      },
+      "id": "b1000000-0000-4000-8000-000000000003",
+      "name": "read_doc",
+      "type": "n8n-nodes-base.googleDocs",
+      "typeVersion": 2,
+      "position": [360, 0]
+    },
+    {
+      "parameters": {
+        "resource": "draft",
+        "operation": "create",
+        "subject": "={{ $fromAI('subject', 'Subject line for the weekly product pulse email', 'string') }}",
+        "emailType": "text",
+        "message": "={{ $fromAI('body', 'Plain-text email body with the weekly pulse and the fee explanation snippet', 'string') }}",
+        "options": {
+          "sendTo": ""
+        }
+      },
+      "id": "b1000000-0000-4000-8000-000000000004",
+      "name": "create_email_draft",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [360, 220]
+    }
+  ],
+  "connections": {
+    "MCP Server Trigger": {
+      "ai_tool": [
+        [
+          { "node": "append_to_doc", "type": "ai_tool", "index": 0 },
+          { "node": "read_doc", "type": "ai_tool", "index": 0 },
+          { "node": "create_email_draft", "type": "ai_tool", "index": 0 }
+        ]
+      ]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "pinData": {}
+}
