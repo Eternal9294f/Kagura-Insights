@@ -1,0 +1,21 @@
+{
+  "corpus_name": "Groww Retail Investor Feedback Corpus — Exit Load Friction",
+  "project_identifier": "kagura-insights",
+  "milestone": "NextLeap PM Fellowship Milestone 4",
+  "collection_window": "2026-08-10 to 2026-10-08",
+  "total_records": 60,
+  "sources": [
+    "Google Play Store",
+    "Apple App Store",
+    "Twitter/X Public Feedback"
+  ],
+  "provenance_type": "Curated benchmark containing real public grievances and developer validation samples",
+  "schema": [
+    "review_id",
+    "date",
+    "rating",
+    "source",
+    "review_text"
+  ],
+  "primary_conflict_isolated": "Users misattribute statutory AMC exit loads deducted during early redemption to unauthorized broker commissions levied by Groww."
+}
